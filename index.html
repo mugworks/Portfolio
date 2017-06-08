@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Michele Greenwood Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="vendor/styles/normalize.css">
-    <link rel="stylesheet" href="styles/bases.css">
-    <link rel="stylesheet" href="styles/icons.css">
-    <link rel="stylesheet" href="styles/modules.css">
-    <link rel="stylesheet" href="styles/layout.css">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Michele Greenwood Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vendor/styles/normalize.css">
+  <link rel="stylesheet" href="styles/bases.css">
+  <link rel="stylesheet" href="styles/icons.css">
+  <link rel="stylesheet" href="styles/modules.css">
+  <link rel="stylesheet" href="styles/layout.css">
 
 
-  </head>
-  <body>
-    <header class="site-header clearfix">
-      <nav class="main-nav">
-        <div class="icon-menu"></div>
-        <ul>
-          <li class="tab" data-content="articles"><a href="#" class="icon-home"> Home</a></li>
-          <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
-          <li><a href="http://twitter.com/brookr" target="_blank" class="icon-twitter3"> Twitter</a></li>
-          <li><a href="http://github.com/brookr" target="_blank" class="icon-github"> GitHub</a></li>
-        </ul>
-      </nav> 
-      <section class="heading-group-h1">
+</head>
+
+<body>
+  <header class="site-header clearfix">
+    <nav class="main-nav">
+      <div class="icon-menu"></div>
+      <ul>
+        <li class="tab" data-content="home"><a href="#" class="icon-home"> Home</a></li>
+        <li class="tab" data-content="contact"><a href="#" class="icon-address-book"> About</a></li>
+        <li><a href="http://linkedIn" target="_blank" class="icon-twitter3"> LinkedIn</a></li>
+        <li><a href="http://github.com/mugworks" target="_blank" class="icon-github"> GitHub</a></li>
+      </ul>
+    </nav>
+    <section class="heading-group-h1">
       <h1>Michele Greenwood</h1>
       <h2>Web Designer</h2>
       <h2>Engineer</h2>
       <h2>Volunteer</h2>
-      </section>
-    <!--<h2>Work Experience</h2>
-    <div class = "resume">
-        <p>I worked at</p>
-        <li id = "company"></li>
-        <li id = "jobTitle"></li>
-        <li id = "years"></li>
-        <li id = "description"></li>
-
-    </div>-->
     </section>
-    </header>
+    <h2>Work Experience</h2>
+    <ul id = "resume"></ul>
+    <li class="template">
+      <p>I worked at</p>
+      <ul>
+        <li class="company"></li>
+        <li class="jobTitle"></li>
+        <li class="years"></li>
+        <li class="description"></li>
+      </ul>
+    </li>
+    </section>
+  </header>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="scripts/rawData.js"></script>
+  <script type="text/javascript" src="scripts/workHistory.js"></script>
+</body>
 
-    <script type = "text/javascript" src="scripts/rawData.js"></script>
-    <script type = "text/javascript" src="scripts/workHistory.js"></script>
-  </body>
 </html>

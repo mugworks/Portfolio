@@ -9,8 +9,8 @@ body {
 
 h1 {
   text-align: center;
-  margin: 1em;
-  width: 80%;
+  /*margin: 1em;*/
+  /*width: 80%;*/
 }
 
 h2 {
@@ -27,3 +27,6 @@ p {
 /*LINK STYLES
 =======================================*/
 
+.resume {
+  display: none;
+}

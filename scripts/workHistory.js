@@ -9,8 +9,25 @@ function WorkExperience (rawWorkData) {
 
 WorkExperience.all = [];
 
-// WorkExperience.prototype.toHtml = function () {
-//   var $newWorkExperience = $('div.resume').clone().removeClass('resume');
-// }
+WorkExperience.prototype.toHtml = function () {
+  var $newWorkExperience = $('li.template').clone().removeClass('template');
+  $newWorkExperience.find('.company').text(this.company);
+  $newWorkExperience.find('.jobTitle').text(this.jobTitle);
+  $newWorkExperience.find('.years').text(this.years);
+  $newWorkExperience.find('.description').text(this.description);
+  console.log($newWorkExperience);
+  $('#resume').append($newWorkExperience);
+};
 
-$('li(#company)').replaceWith(this.company);
+rawWorkData.forEach(function (obj){
+  var workObj = new WorkExperience(obj);
+  WorkExperience.all.push(workObj);
+});
+
+WorkExperience.all.forEach(function (obj){
+  // console.log(obj);
+  obj.toHtml();
+});
+
+
+// console.log(WorkExperience.all);

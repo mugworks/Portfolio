@@ -1,4 +1,4 @@
-/*.pull-left {
+.pull-left {
   float: left;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .heading-group-h1 {
-  max-width: 80%;
+  /*max-width: 80%;*/
 }
 
 #filters select {
@@ -36,4 +36,4 @@
     width: 20em;
     display: inline;
   }
-}*/
+}

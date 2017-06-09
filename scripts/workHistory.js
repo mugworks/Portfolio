@@ -19,6 +19,9 @@ WorkExperience.prototype.toHtml = function () {
   $('#resume').append($newWorkExperience);
 };
 
+
+
+
 rawWorkData.forEach(function (obj){
   var workObj = new WorkExperience(obj);
   WorkExperience.all.push(workObj);
@@ -29,5 +32,20 @@ WorkExperience.all.forEach(function (obj){
   obj.toHtml();
 });
 
+var workView = {};
 
-// console.log(WorkExperience.all);
+workView.handleMainNav = function() {
+  $('.main-nav').on('click', '.tab', function() {
+    // event.preventDefault();
+    console.log('click works', $(this).data('category'));
+    $('.tab-content').hide();
+    // $('div[data-category=' + $(this).data('category') + ']').show();
+    $('.tab').hide();
+    // $('#' + $(this).data('resume')).fadeIn();
+  });
+
+  // $('.main-nav .tab:first').click();
+};
+
+
+workView.handleMainNav();

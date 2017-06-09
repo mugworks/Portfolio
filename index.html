@@ -19,20 +19,23 @@
     <nav class="main-nav">
       <div class="icon-menu"></div>
       <ul>
-        <li class="tab" data-content="home"><a href="#" class="icon-home"> Home</a></li>
-        <li class="tab" data-content="contact"><a href="#" class="icon-address-book"> About</a></li>
-        <li><a href="http://linkedIn" target="_blank" class="icon-twitter3"> LinkedIn</a></li>
-        <li><a href="http://github.com/mugworks" target="_blank" class="icon-github"> GitHub</a></li>
+        <li class="tab" data-content="web-designer"><a href="#" class="icon-home"> Web Designer</a></li>
+        <li class="tab" data-content="engineer"><a href="#" class="icon-address-book"> Engineer</a></li>
+        <li class="tab" data-content="volunteer"><a href="#" target="_blank" class="icon-checkmark">Volunteer</a></li>
       </ul>
     </nav>
-    <section class="heading-group-h1">
-      <h1 id="box"></h1>
+  </header>
+  <section class="heading-group-h1">
+    <h1 id="box"></h1>
+    <div class="tab-content">
       <h2>Web Designer</h2>
-      <h2>Engineer</h2>
+      <h2 id="work">Engineer</h2>
       <h2>Volunteer</h2>
-    </section>
+    </div>
+  </section>
+  <div class="tab-content" data-category="engineer">
     <h2>Work Experience</h2>
-    <ul id = "resume"></ul>
+    <ul id="resume"></ul>
     <li class="template">
       <p>I worked at</p>
       <ul>
@@ -42,8 +45,13 @@
         <li class="description"></li>
       </ul>
     </li>
-    </section>
-  </header>
+  </div>
+  <div class="tab-content" data-category="web-designer">
+    <h2>Web Designer</h2>
+  </div>
+  <div class="tab-content" data-category="volunteer">
+    <h2>Volunteer</h2>
+  </div>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
 

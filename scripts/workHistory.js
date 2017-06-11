@@ -7,29 +7,31 @@ function WorkExperience (rawWorkData) {
   this.description = rawWorkData.description;
 }
 
-WorkExperience.all = [];
+var workExperienceArray = [];
 
 WorkExperience.prototype.toHtml = function () {
-  var $newWorkExperience = $('li.template').clone().removeClass('template');
-  $newWorkExperience.find('.company').text(this.company);
-  $newWorkExperience.find('.jobTitle').text(this.jobTitle);
-  $newWorkExperience.find('.years').text(this.years);
-  $newWorkExperience.find('.description').text(this.description);
-  console.log($newWorkExperience);
-  $('#resume').append($newWorkExperience);
+  // var $newWorkExperience = $('li.template').clone().removeClass('template');
+  // $newWorkExperience.find('.company').text(this.company);
+  // $newWorkExperience.find('.jobTitle').text(this.jobTitle);
+  // $newWorkExperience.find('.years').text(this.years);
+  // $newWorkExperience.find('.description').text(this.description);
+  // console.log($newWorkExperience);
+  // $('#resume').append($newWorkExperience);
+  var template = Handlebars.compile($('#work-template').text());
+  console.log('at prototype');
+  return template(this);
 };
 
 
 
 
-rawWorkData.forEach(function (obj){
-  var workObj = new WorkExperience(obj);
-  WorkExperience.all.push(workObj);
-});
+// rawWorkData.forEach(function (obj){
+//   WorkExperience.all.push(new WorkExperience(obj));
+// });
 
-WorkExperience.all.forEach(function (obj){
-  obj.toHtml();
-});
+// WorkExperience.all.forEach(function (obj){
+//   obj.toHtml();
+// });
 
 var workView = {};
 
@@ -42,8 +44,19 @@ workView.handleMainNav = function() {
   });
 };
 
+function populateWork() {
+  rawWorkData.forEach(function(obj){
+    workExperienceArray.push(new WorkExperience(obj));
+  });
+  workExperienceArray.forEach(function(obj) {
+    $('#work-template').append(obj.toHtml());
+  });
+}
+
+
 function initIndexPage () {
   console.log ('starting index page');
+  populateWork();
   $('.tab-content').hide();
 };
 

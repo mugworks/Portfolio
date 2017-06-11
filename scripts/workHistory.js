@@ -49,13 +49,12 @@ function populateWork() {
     workExperienceArray.push(new WorkExperience(obj));
   });
   workExperienceArray.forEach(function(obj) {
-    $('#work-template').append(obj.toHtml());
+    $('#engineer').append(obj.toHtml());
   });
 }
 
 
 function initIndexPage () {
-  console.log ('starting index page');
   populateWork();
   $('.tab-content').hide();
 };

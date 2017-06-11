@@ -1,6 +1,6 @@
 'use strict';
 
-var rawWorkData = [ 
+var rawWorkData = [ // eslint-disable-line no-unused-vars
   {
     company: 'Precision Interconnect',
     jobTitle: 'Product Development Engineer',

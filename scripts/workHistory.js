@@ -28,7 +28,6 @@ rawWorkData.forEach(function (obj){
 });
 
 WorkExperience.all.forEach(function (obj){
-  // console.log(obj);
   obj.toHtml();
 });
 
@@ -36,16 +35,17 @@ var workView = {};
 
 workView.handleMainNav = function() {
   $('.main-nav').on('click', '.tab', function() {
-    // event.preventDefault();
-    console.log('click works', $(this).data('category'));
+    event.preventDefault();
+    $('.opening').hide();
     $('.tab-content').hide();
-    // $('div[data-category=' + $(this).data('category') + ']').show();
-    $('.tab').hide();
-    // $('#' + $(this).data('resume')).fadeIn();
+    $('#' + $(this).data('content')).fadeIn();
   });
-
-  // $('.main-nav .tab:first').click();
 };
 
+function initIndexPage () {
+  console.log ('starting index page');
+  $('.tab-content').hide();
+};
 
+initIndexPage();
 workView.handleMainNav();

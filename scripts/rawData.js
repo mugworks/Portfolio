@@ -1,6 +1,6 @@
 'use strict';
 
-var rawWorkData = [
+var rawWorkData = [ 
   {
     company: 'Precision Interconnect',
     jobTitle: 'Product Development Engineer',

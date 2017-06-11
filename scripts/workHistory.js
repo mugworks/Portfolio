@@ -19,15 +19,33 @@ WorkExperience.prototype.toHtml = function () {
   $('#resume').append($newWorkExperience);
 };
 
+
+
+
 rawWorkData.forEach(function (obj){
   var workObj = new WorkExperience(obj);
   WorkExperience.all.push(workObj);
 });
 
 WorkExperience.all.forEach(function (obj){
-  // console.log(obj);
   obj.toHtml();
 });
 
+var workView = {};
 
-// console.log(WorkExperience.all);
+workView.handleMainNav = function() {
+  $('.main-nav').on('click', '.tab', function() {
+    event.preventDefault();
+    $('.opening').hide();
+    $('.tab-content').hide();
+    $('#' + $(this).data('content')).fadeIn();
+  });
+};
+
+function initIndexPage () {
+  console.log ('starting index page');
+  $('.tab-content').hide();
+};
+
+initIndexPage();
+workView.handleMainNav();

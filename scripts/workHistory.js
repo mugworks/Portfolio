@@ -1,42 +1,25 @@
 'use strict';
 
-function WorkExperience (rawWorkData) {
+function WorkExperience(rawWorkData) {
   this.company = rawWorkData.company;
   this.jobTitle = rawWorkData.jobTitle;
   this.years = rawWorkData.years;
   this.description = rawWorkData.description;
 }
 
-var workExperienceArray = [];
+WorkExperience.all = [];
 
 WorkExperience.prototype.toHtml = function () {
-  // var $newWorkExperience = $('li.template').clone().removeClass('template');
-  // $newWorkExperience.find('.company').text(this.company);
-  // $newWorkExperience.find('.jobTitle').text(this.jobTitle);
-  // $newWorkExperience.find('.years').text(this.years);
-  // $newWorkExperience.find('.description').text(this.description);
-  // console.log($newWorkExperience);
-  // $('#resume').append($newWorkExperience);
   var template = Handlebars.compile($('#work-template').text());
-  console.log('at prototype');
   return template(this);
 };
 
 
 
-
-// rawWorkData.forEach(function (obj){
-//   WorkExperience.all.push(new WorkExperience(obj));
-// });
-
-// WorkExperience.all.forEach(function (obj){
-//   obj.toHtml();
-// });
-
 var workView = {};
 
-workView.handleMainNav = function() {
-  $('.main-nav').on('click', '.tab', function() {
+workView.handleMainNav = function () {
+  $('.main-nav').on('click', '.tab', function () {
     event.preventDefault();
     $('.opening').hide();
     $('.tab-content').hide();
@@ -44,20 +27,35 @@ workView.handleMainNav = function() {
   });
 };
 
-function populateWork() {
-  rawWorkData.forEach(function(obj){
-    workExperienceArray.push(new WorkExperience(obj));
+function populateWork(rawWorkData) {
+  rawWorkData.forEach(function (obj) {
+    WorkExperience.all.push(new WorkExperience(obj));
   });
-  workExperienceArray.forEach(function(obj) {
+  WorkExperience.all.forEach(function (obj) {
     $('#engineer').append(obj.toHtml());
   });
 }
 
 
-function initIndexPage () {
-  populateWork();
+function initIndexPage() {
   $('.tab-content').hide();
 };
 
-initIndexPage();
+
+WorkExperience.fetchAll = function () {
+  if (localStorage.rawWorkData) {
+    populateWork(JSON.parse(localStorage.rawWorkData));
+    initIndexPage();
+  } else {
+    $.getJSON('./data/rawData.json')
+      .then(function (rawWorkData) {
+        populateWork(rawWorkData);
+        localStorage.rawWorkData = JSON.stringify(rawWorkData);
+        initIndexPage();
+      }, function (err) {
+        console.error(err);
+      });
+  }
+};
+
 workView.handleMainNav();

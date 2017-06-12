@@ -1,6 +1,6 @@
 'use strict';
 
-function WorkExperience (rawWorkData) {
+function WorkExperience(rawWorkData) {
   this.company = rawWorkData.company;
   this.jobTitle = rawWorkData.jobTitle;
   this.years = rawWorkData.years;
@@ -18,8 +18,8 @@ WorkExperience.prototype.toHtml = function () {
 
 var workView = {};
 
-workView.handleMainNav = function() {
-  $('.main-nav').on('click', '.tab', function() {
+workView.handleMainNav = function () {
+  $('.main-nav').on('click', '.tab', function () {
     event.preventDefault();
     $('.opening').hide();
     $('.tab-content').hide();
@@ -27,35 +27,34 @@ workView.handleMainNav = function() {
   });
 };
 
-function populateWork() {
-  rawWorkData.forEach(function(obj){
+function populateWork(rawWorkData) {
+  rawWorkData.forEach(function (obj) {
     WorkExperience.all.push(new WorkExperience(obj));
   });
-  WorkExperience.all.forEach(function(obj) {
+  WorkExperience.all.forEach(function (obj) {
     $('#engineer').append(obj.toHtml());
   });
 }
 
 
-function initIndexPage () {
-  populateWork();
+function initIndexPage() {
   $('.tab-content').hide();
 };
 
 
 WorkExperience.fetchAll = function () {
   if (localStorage.rawWorkData) {
-    WorkExperience.loadAll(JSON.parse(localStorage.rawWorkData));
+    populateWork(JSON.parse(localStorage.rawWorkData));
     initIndexPage();
-  }else {
-    $.getJSON('/data/rawData.json')
-    .then(function(rawWorkData){
-      WorkExperience.loadAll(rawWorkData);
-      localStorage.rawWorkData = JSON.stringify(rawWorkData);
-      initIndexPage();
-    }, function(err) {
-      console.error(err);
-    });
+  } else {
+    $.getJSON('./data/rawData.json')
+      .then(function (rawWorkData) {
+        populateWork(rawWorkData);
+        localStorage.rawWorkData = JSON.stringify(rawWorkData);
+        initIndexPage();
+      }, function (err) {
+        console.error(err);
+      });
   }
 };
 

@@ -52,7 +52,9 @@ function populateWork(rawWorkData) {
   // rawWorkData.forEach(function (obj) {
   //   app.WorkExperience.all.push(new app.WorkExperience(obj));
   // });
+
   rawWorkData.map(obj => app.WorkExperience.all.push(new app.WorkExperience(obj)));
+
   app.WorkExperience.all.forEach(function (obj) {
     $('#engineer').append(obj.toHtml());
   });
@@ -61,6 +63,9 @@ function populateWork(rawWorkData) {
 
 function initIndexPage() {
   $('.tab-content').hide();
+  // Trying a reduce function
+// var numJobs = [32, 34, 65, 29, 55];
+//   var numJobsArray = numJobs.reduce((acc, curr) => acc + curr);
 };
 
 

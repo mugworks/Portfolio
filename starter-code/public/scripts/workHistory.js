@@ -49,10 +49,10 @@ workView.handleMainNav = function () {
 };
 
 function populateWork(rawWorkData) {
-  console.log('in populate work');
-  rawWorkData.forEach(function (obj) {
-    app.WorkExperience.all.push(new app.WorkExperience(obj));
-  });
+  // rawWorkData.forEach(function (obj) {
+  //   app.WorkExperience.all.push(new app.WorkExperience(obj));
+  // });
+  rawWorkData.map(obj => app.WorkExperience.all.push(new app.WorkExperience(obj)));
   app.WorkExperience.all.forEach(function (obj) {
     $('#engineer').append(obj.toHtml());
   });

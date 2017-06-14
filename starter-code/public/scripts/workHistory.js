@@ -1,19 +1,40 @@
 'use strict';
 
-function WorkExperience(rawWorkData) {
-  this.company = rawWorkData.company;
-  this.jobTitle = rawWorkData.jobTitle;
-  this.years = rawWorkData.years;
-  this.description = rawWorkData.description;
-}
+var app = app || {};
 
-WorkExperience.all = [];
+(function (module) {
 
-WorkExperience.prototype.toHtml = function () {
-  var template = Handlebars.compile($('#work-template').text());
-  return template(this);
-};
+  function WorkExperience(rawWorkData) {
+    this.company = rawWorkData.company;
+    this.jobTitle = rawWorkData.jobTitle;
+    this.years = rawWorkData.years;
+    this.description = rawWorkData.description;
+  }
 
+  WorkExperience.all = [];
+
+  WorkExperience.prototype.toHtml = function () {
+    var template = Handlebars.compile($('#work-template').text());
+    return template(this);
+  };
+
+  WorkExperience.fetchAll = function () {
+    if (localStorage.rawWorkData) {
+      populateWork(JSON.parse(localStorage.rawWorkData));
+      initIndexPage();
+    } else {
+      $.getJSON('./data/rawData.json')
+        .then(function (rawWorkData) {
+          populateWork(rawWorkData);
+          localStorage.rawWorkData = JSON.stringify(rawWorkData);
+          initIndexPage();
+        }, function (err) {
+          console.error(err);
+        });
+    }
+  };
+  module.WorkExperience = WorkExperience;
+}(app));
 
 
 var workView = {};
@@ -30,9 +51,9 @@ workView.handleMainNav = function () {
 function populateWork(rawWorkData) {
   console.log('in populate work');
   rawWorkData.forEach(function (obj) {
-    WorkExperience.all.push(new WorkExperience(obj));
+    app.WorkExperience.all.push(new app.WorkExperience(obj));
   });
-  WorkExperience.all.forEach(function (obj) {
+  app.WorkExperience.all.forEach(function (obj) {
     $('#engineer').append(obj.toHtml());
   });
 }
@@ -43,20 +64,5 @@ function initIndexPage() {
 };
 
 
-WorkExperience.fetchAll = function () {
-  if (localStorage.rawWorkData) {
-    populateWork(JSON.parse(localStorage.rawWorkData));
-    initIndexPage();
-  } else {
-    $.getJSON('./data/rawData.json')
-      .then(function (rawWorkData) {
-        populateWork(rawWorkData);
-        localStorage.rawWorkData = JSON.stringify(rawWorkData);
-        initIndexPage();
-      }, function (err) {
-        console.error(err);
-      });
-  }
-};
 
 workView.handleMainNav();

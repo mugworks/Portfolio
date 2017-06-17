@@ -26,9 +26,9 @@
     <nav class="main-nav">
       <div class="icon-menu"></div>
       <ul>
-        <li class="tab" data-content="web-designer"><a href="#" class="icon-home"> Web Designer</a></li>
-        <li class="tab" data-content="engineer"><a href="#" class="icon-address-book"> Engineer</a></li>
-        <li class="tab" data-content="volunteer"><a href="#" class="icon-checkmark">Volunteer</a></li>
+        <li class="tab" data-content="web-designer"><a href="/web_design" class="icon-home"> Web Designer</a></li>
+        <li class="tab" data-content="engineer"><a href="/work" class="icon-address-book"> Engineer</a></li>
+        <li class="tab" data-content="volunteer"><a href="/volunteer" class="icon-checkmark">Volunteer</a></li>
       </ul>
     </nav>
   </header>
@@ -40,23 +40,31 @@
       <h2>Volunteer</h2>
     </div>
   </section>
-  <div class="tab-content" id="engineer">
-    <h2>Work Experience</h2>
-  </div>
-  <div class="tab-content" id="volunteer">
-    <h2>Volunteer Experience</h2>
-  </div>
+  <main>
+    <div class="tab-content" id="web-designer">
+      <h2>My Projects</h2>
+    </div>
+    <div class="tab-content" id="engineer">
+      <h2>Work Experience</h2>
+    </div>
+    <div class="tab-content" id="volunteer">
+      <h2>Volunteer Experience</h2>
+    </div>
+  </main>
 
-  <div class="tab-content" id="web-designer">
-    <h2>My Projects</h2>
-  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+  <script src="/vendor/scripts/page.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/controllers/webDesignController.js"></script>
+  <script type="text/javascript" src="/scripts/controllers/workController.js"></script>
+  <script type="text/javascript" src="/scripts/controllers/volunteerController.js"></script>
   <script type="text/javascript" src="/scripts/workHistory.js"></script>
-  <script>app.WorkExperience.fetchAll(); </script>
+  <script type="text/javascript" src="/scripts/controllers/routes.js"></script>
+
+
 </body>
 
 </html>

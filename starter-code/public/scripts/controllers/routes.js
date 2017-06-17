@@ -2,8 +2,10 @@
 
 app = app || {};
 
-// page ('/', app.);
-page ('/workExperience', app.workController.index);
+page ('/', initIndexPage);
+page('/web_design', app.webDesignController.index);
+page('/work', app.workController.index, displayContents);
+page('/volunteer', app.volunteerController.index);
 
 
 

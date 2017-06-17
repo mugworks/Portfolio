@@ -1,17 +1,20 @@
 'use strict';
 
-app = app || {};
+var app = app || {};
 
 (function(module) {
-  const workController = {};
+  var workController = {};
 
-  workController.index = 
-  $('.main-nav').on('click', '.tab', function () {
-    event.preventDefault();
-    $('.opening').hide();
-    $('.tab-content').hide();
-    $('#' + $(this).data('content')).fadeIn();
-  });
+  workController.index = function(ctx, next) {
+    app.WorkExperience.fetchAll();
+    next();
+  };
 
   module.workController = workController;
 })(app);
+
+var displayContents = function() { //eslint-disable-line no-unused-vars
+  $('main > div').hide();
+  $('#engineer').show();
+  $('.opening').hide();
+};

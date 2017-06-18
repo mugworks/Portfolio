@@ -46,13 +46,11 @@ function populateWork(rawWorkData) {
 
   app.WorkExperience.all.forEach(function (obj) {
     $('#engineer').append(obj.toHtml());
-    
   });
 }
 
 
 function initIndexPage() { //eslint-disable-line no-unused-vars
   $('.tab-content').hide();
-};
-
+}
 

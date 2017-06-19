@@ -17,4 +17,5 @@ var displayContents = function() { //eslint-disable-line no-unused-vars
   $('main > div').hide();
   $('#engineer').show();
   $('.opening').hide();
+  
 };

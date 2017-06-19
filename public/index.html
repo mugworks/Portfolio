@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Michele Greenwood Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vendor/styles/normalize.css">
+  <link rel="stylesheet" href="styles/bases.css">
+  <link rel="stylesheet" href="styles/icons.css">
+  <link rel="stylesheet" href="styles/modules.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <script id="work-template" type="text/x-handlebars-template">
+  <article class="clearfix">
+    <h2>{{company}}</h2>
+    <h3>{{jobTitle}}</h3>
+    <h3>{{years}}</h3>
+    <h3>{{description}}</h3>
+    <img>
+  </article>
+  </script>
+  <script id="project-template" type="text/x-handlebars-template">
+    <li>
+      <a href="{{html_url}}" target="_blank">
+        <h3>{{name}}</h3>
+      </a>
+      <p>Description: {{description}}</p>
+      <p>Language: {{language}}</p>
+      <p> Created: {{created_at}}</p>
+      <p>Last updated: {{updated_at}}</p>
+      {{#if watchers_count}}<p>{{watchers_count}}watching this repo</p>
+      {{/if}}
+    </li>
+  </script>
+
+</head>
+
+<body>
+  <header class="site-header clearfix">
+    <nav class="main-nav">
+      <div class="icon-menu"></div>
+      <ul>
+        <li class="tab" data-content="web-designer"><a href="/web_design" class="icon-home"> Web Designer</a></li>
+        <li class="tab" data-content="engineer"><a href="/work" class="icon-address-book"> Engineer</a></li>
+        <li class="tab" data-content="volunteer"><a href="/volunteer" class="icon-checkmark">Volunteer</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="heading-group-h1">
+    <h1 id="box"></h1>
+    <div class="opening">
+      <h2>Web Designer</h2>
+      <h2>Engineer</h2>
+      <h2>Volunteer</h2>
+    </div>
+  </section>
+  <main>
+    <div class="tab-content" id="web-designer">
+      <h2>My Projects</h2>
+      <ul></ul>
+    </div>
+    <div class="tab-content" id="engineer">
+      <h2>Work Experience</h2>
+    </div>
+    <div class="tab-content" id="volunteer">
+      <h2>Volunteer Experience</h2>
+    </div>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="/vendor/scripts/page.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script src="scripts/githubToken.js"></script>
+  <script src="/scripts/controllers/webDesignController.js"></script>
+  <script src="/scripts/controllers/workController.js"></script>
+  <script src="/scripts/controllers/volunteerController.js"></script>
+  <script src="/scripts/models/repo.js"></script>
+  <script src="/scripts/workHistory.js"></script>
+  <script src="/scripts/views/repoView.js"></script>
+  <script src="/scripts/controllers/routes.js"></script>
+  
+
+</body>
+
+</html>

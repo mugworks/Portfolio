@@ -1,4 +1,3 @@
-.vscode;
-.DS_Store;
-githubToken.js;
-
+.vscode
+.DS_Store
+.env
